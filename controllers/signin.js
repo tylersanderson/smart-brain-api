@@ -22,7 +22,7 @@ const handleSignin = (db, bcrypt, req, res) => {
 				Promise.reject('wrong credentials')
 			}
 		})
-		.catch(err => Promise.reject(400).json('wrong credentials'))
+		.catch(err => Promise.reject('wrong credentials'))
 }
 const getAuthTokenId = (req, res) => {
 	const { authorization } = req.headers;
@@ -68,4 +68,7 @@ const signinAuthentication = (db, bcrypt) => (req, res) => {
 module.exports = {
 	signinAuthentication: signinAuthentication,
 	redisClient: redisClient,
+	signToken: signToken,
+	setToken: setToken,
+	createSessions: createSessions
 };
